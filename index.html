@@ -11,20 +11,18 @@
   <body>
     <a-scene mindar-image="imageTargetSrc: ./targets.mind;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-      <!--<a-entity mindar-image-target="targetIndex: 0">
-        <a-plane color="blue" opaciy="0.5" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
-      </a-entity>-->
+
       <a-entity
         mindar-image-target="targetIndex: 0"
-        gltf-model="/arjsapp/models/cone.gltf"
-        scale="1 1 1"
+        gltf-model="./models/cone.gltf"
+        scale="0.3 0.3 0.3"
         opacity="0.5"
         position="0 0 0"
       >
       </a-entity>
       <a-gltf-model
         mindar-image-target="targetIndex: 1"
-        gltf-model="/arjsapp/models/cube.gltf"
+        gltf-model="./models/cube.gltf"
         scale="0.01 0.01 0.01"
         opacity="0.5"
         position="0 0 0"
