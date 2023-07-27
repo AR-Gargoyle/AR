@@ -43,8 +43,8 @@
 
           let model2 = document.createElement('a-entity');
           model2.setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`);
-          //model2.setAttribute('gltf-model', './models/cube.gltf');
-          model2.setAttribute('geometry', 'primitive:cube');
+          model2.setAttribute('gltf-model', './models/cube.gltf');
+          //model2.setAttribute('geometry', 'primitive:cube');
           //model2.setAttribute('src','./textures/metal.jpg');
           model2.setAttribute('material','src: ./textures/metal.jpg; color:#FFFFFF; roughness:0.5; metalness: 0.8');
           model2.setAttribute('rotation', '10 180 0');
