@@ -25,7 +25,7 @@
           model.setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`);
           model.setAttribute('gltf-model', './models/cone.gltf');
           model.setAttribute('rotation', '0 180 0');
-          model.setAttribute('position', '0.5 0.1 0.2');
+
           model.setAttribute('animation-mixer', '');
           model.setAttribute('scale', '0.5 0.5 0.5');
 
@@ -34,6 +34,7 @@
           let model2 = document.createElement('a-entity');
           model2.setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`);
           model2.setAttribute('gltf-model', './models/cube.gltf');
+          model2.setAttribute('material',"color: white; shader: flat; src: ./textures/metal.jpg"); material="color: white; shader: flat; src: glow.jpg"
           model2.setAttribute('rotation', '0 180 0');
           model2.setAttribute('animation-mixer', '');
           model2.setAttribute('scale', '0.3 0.4 0.4');
