@@ -11,9 +11,26 @@
     <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
     <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
     <script>
+      document.addEventListener('DOMContentLoaded', function(){ //equivalent to jQuery $('document').ready(function(){})
+        navigator.geolocation.getCurrentPosition((position) => {
+          console.log(position.coords.latitude+" "+position.coords.longitude);
+          document.querySelector('a-text').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`);
+
+          //document.querySelector('a-gltf-model').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`);
+          //document.querySelector('a-entity').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`);
+          let model = document.createElement('a-entity');
+          model.setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`);
+          model.setAttribute('gltf-model', './models/cube.gltf');
+          model.setAttribute('rotation', '0 180 0');
+          model.setAttribute('animation-mixer', '');
+          model.setAttribute('scale', '0.5 0.5 0.5');
+        });  
+        /* alert("this will show"); */
+          alert = function(){};
+          /* alert("ALL alert after this won't show"); */
+      }, false);
       
-      
-      window.onload = () => {                       
+      /*window.onload = () => {                       
         navigator.geolocation.getCurrentPosition((position) => {
           console.log(position.coords.latitude+" "+position.coords.longitude);
           document.querySelector('a-text').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`);
@@ -27,7 +44,7 @@
           model.setAttribute('animation-mixer', '');
           model.setAttribute('scale', '0.5 0.5 0.5');
         });
-      }
+      }*/
     </script>
   </head>
 
