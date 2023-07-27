@@ -1,37 +1,52 @@
-﻿
 <!doctype HTML>
-
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.5/dist/mindar-image.prod.js"></script>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.5/dist/mindar-image-aframe.prod.js"></script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Location Based AR.js demo</title>
+    <!--<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>-->
+    <script src='https://aframe.io/releases/1.0.4/aframe.min.js'></script>
+    <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
+    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+    <script>
+
+      window.onload = () => {   
+        let scene = document.querySelector('a-scene');
+
+        navigator.geolocation.getCurrentPosition((position) => {
+          console.log(position.coords.latitude+" "+position.coords.longitude);
+          document.querySelector('a-text').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`);
+
+          //document.querySelector('a-gltf-model').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`);
+          //document.querySelector('a-entity').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`);
+          let model = document.createElement('a-entity');
+          model.setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`);
+          model.setAttribute('gltf-model', './models/cone.gltf');
+          model.setAttribute('rotation', '0 180 0');
+          model.setAttribute('animation-mixer', '');
+          model.setAttribute('scale', '0.5 0.5 0.5');
+
+          scene.appendChild(model);
+        });
+      }
+    </script>
   </head>
-  <body>
-    <a-scene mindar-image="imageTargetSrc: ./targets.mind;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
-      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-      <a-gltf-model
-        mindar-image-target="targetIndex: 0"
-        gltf-model="./models/cone.gltf"
-        scale="0.3 0.3 0.3"
-        opacity="0.5"
-        position="0 0 0"
-      >
-      </a-gltf-model>
-      <a-gltf-model
-        mindar-image-target="targetIndex: 1"
-        gltf-model="./models/cube.gltf"
-        scale="0.01 0.01 0.01"
-        opacity="0.5"
-        position="0 0 0"
-      >
-      </a-gltf-model>
+  <body style="margin: 0; overflow: hidden;">
+    <a-scene
+      vr-mode-ui="enabled: false"
+      embedded
+      arjs="sourceType: webcam; debugUIEnabled: true;"
+    >
+      <a-text
+        value="No markers around"
+        look-at="[gps-camera]"
+        scale="5 5 5"
+      ></a-text>
+
+      <a-camera gps-camera rotation-reader> </a-camera>
     </a-scene>
-    
-     
-      
-
   </body>
 </html>
