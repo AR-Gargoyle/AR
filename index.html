@@ -23,14 +23,15 @@
         scene.appendChild(assets);*/
 
         navigator.geolocation.getCurrentPosition((position) => {
-          console.log(position.coords.latitude+" "+position.coords.longitude);
+          //console.log(position.coords.latitude+" "+position.coords.longitude);
           document.querySelector('a-text').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`);
 
           //document.querySelector('a-gltf-model').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`);
           //document.querySelector('a-entity').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`);
           //19.691751584074083, -101.17542613382736
+          //47.91222561103212, 8.212920529351447
           let model = document.createElement('a-entity');
-          model.setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`);
+          model.setAttribute('gps-entity-place', `latitude: 47.91222561103212; longitude: 8.212920529351447;`);
           model.setAttribute('gltf-model', './models/scan.glb');
           model.setAttribute('rotation', '0 180 0');
           model.setAttribute('material','shader:flat; color:red');
