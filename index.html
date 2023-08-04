@@ -56,13 +56,13 @@
           scene.appendChild(model2);
         });
 
-        window.addEventListener("gps-camera-update-position", e => { 
-          console.log("hnhhhhh");
-        });
-        /*
+        
         setInterval(() => {
+          navigator.geolocation.getCurrentPosition((position) => {
+          });
           console.log("Ejecutar cada 1 seg")
-        }, 1000);*/
+
+        }, 1000);
         
       }
     </script>
