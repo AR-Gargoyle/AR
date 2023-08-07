@@ -41,9 +41,6 @@
 
           scene.appendChild(model);
 
-          
-
-
           let model2 = document.createElement('a-entity');
           //19.702936657203754, -101.15542961627439
           model2.setAttribute('gps-entity-place', `latitude: 19.702936657203754; longitude: -101.15542961627439;`);
@@ -60,13 +57,13 @@
         });
 
         
-        setInterval(() => {
+        /*setInterval(() => {
           navigator.geolocation.getCurrentPosition((position) => {
           });
           console.log("Ejecutar cada 1 seg")
 
         }, 1000);
-        
+        */
       }
     </script>
   </head>
