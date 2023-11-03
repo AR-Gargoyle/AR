@@ -54,6 +54,64 @@
           model2.setAttribute('scale', '0.3 0.3 0.4');
 
           scene.appendChild(model2);
+
+          let names = [
+            "WS05.glb",
+            "WS09.glb",
+            "WS14.glb",
+            "WS22.glb",
+            "WS29.glb",
+            "WS34.glb",
+            "WS36.glb",
+            "WS41.glb",
+            "WS45.glb",
+            "WS46.glb",
+            "WS47.glb",
+            "WS59.glb",
+            "WS64.glb",
+            "WS74.glb",
+            "WS75.glb",
+            "WS87.glb",
+            "WS88.glb",
+            "WS91.glb",
+          ];
+
+          let places = [
+            'latitude: 47.91223437219309; longitude: 8.21291138883362;',
+            'latitude: 47.91223437219309; longitude: 8.21291138883362;',
+            'latitude: 47.91223437219309; longitude: 8.21291138883362;',
+            'latitude: 47.91223437219309; longitude: 8.21291138883362;',
+            'latitude: 47.91223437219309; longitude: 8.21291138883362;',
+            'latitude: 47.91223437219309; longitude: 8.21291138883362;',
+            'latitude: 47.91223437219309; longitude: 8.21291138883362;',
+            'latitude: 47.91223437219309; longitude: 8.21291138883362;',
+            'latitude: 47.91223437219309; longitude: 8.21291138883362;',
+            'latitude: 47.91223437219309; longitude: 8.21291138883362;',
+            'latitude: 47.91223437219309; longitude: 8.21291138883362;',
+            'latitude: 47.91223437219309; longitude: 8.21291138883362;',
+            'latitude: 47.91223437219309; longitude: 8.21291138883362;',
+            'latitude: 47.91223437219309; longitude: 8.21291138883362;',
+            'latitude: 47.91223437219309; longitude: 8.21291138883362;',
+            'latitude: 47.91223437219309; longitude: 8.21291138883362;',
+            'latitude: 47.91223437219309; longitude: 8.21291138883362;',
+            'latitude: 47.91223437219309; longitude: 8.21291138883362;',
+          ];
+
+          for (let index = 0; index < names.length; index++) {
+
+            let model = document.createElement('a-entity');
+            model.setAttribute('gps-entity-place', places[index]);
+            model.setAttribute('gps-entity-place-update-positon', `distance: 0`);
+            model.setAttribute('gltf-model', './models/'+names[index]);
+            model.setAttribute('rotation', '0 180 0');
+            model.setAttribute('material','shader:flat');
+            model.setAttribute('animation-mixer', '');
+            model.setAttribute('scale', '0.5 0.5 0.5');
+
+            scene.appendChild(model);
+            
+          }
+        
         });
 
         
