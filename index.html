@@ -112,21 +112,21 @@
             scene.appendChild(model);
             
           }*/
-          while(true){
-            setInterval(() => {
-              navigator.geolocation.getCurrentPosition((position) => {
-                console.log(position.coords.latitude+" "+position.coords.longitude);
-                console.log("distancia: "+measure(19.691751584074083, -101.17542613382736, position.coords.latitude, position.coords.longitude))
-              });
-            }, 1000);
-          }
+
+            
+          
         });
 
         
       }
 
         
-
+      setInterval(() => {
+        navigator.geolocation.getCurrentPosition((position) => {
+          console.log(position.coords.latitude+" "+position.coords.longitude);
+          console.log("distancia: "+measure(19.691751584074083, -101.17542613382736, position.coords.latitude, position.coords.longitude))
+        });
+      }, 1000);
         
         function measure(lat1, lon1, lat2, lon2) {
           // generally used geo measurement function
