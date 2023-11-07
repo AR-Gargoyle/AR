@@ -118,7 +118,8 @@
         while(true){
           setInterval(() => {
             navigator.geolocation.getCurrentPosition((position) => {
-              console.log("distancia: "+measure(19.691751584074083, -101.17542613382736, position.latitude, position.longitude))
+              console.log(position.coords.latitude+" "+position.coords.longitude);
+              console.log("distancia: "+measure(19.691751584074083, -101.17542613382736, position.coords.latitude, position.coords.longitude))
             });
           }, 1000);
         }
