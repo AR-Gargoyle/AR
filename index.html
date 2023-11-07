@@ -115,6 +115,9 @@
         
         });
 
+        
+      }
+
         while(true){
           setInterval(() => {
             navigator.geolocation.getCurrentPosition((position) => {
@@ -123,10 +126,7 @@
             });
           }, 1000);
         }
-        
-          
 
-        
         
         function measure(lat1, lon1, lat2, lon2) {
           // generally used geo measurement function
@@ -143,7 +143,6 @@
           var d = R * c;
           return d * 1000; // meters
         }
-      }
     </script>
   </head>
 
