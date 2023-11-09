@@ -3,58 +3,24 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Location Based AR.js demo</title>
-    <!--<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>-->
+    <title>Gargoyles</title>
+    <!--Libraries for AR-->
     <script src='https://aframe.io/releases/1.0.4/aframe.min.js'></script>
     <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
     <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
     <script>
 
       window.onload = () => {
+        //scene creation in runtime
         let scene = document.querySelector('a-scene');
 
-        /*let assets = document.createElement('a-assets');
-        let texture = document.createElement('img');
-        texture.setAttribute('id','texture');
-        texture.setAttribute('src','./textures/metal.jpg');
-        assets.appendChild(texture);
-        scene.appendChild(assets);*/
-
+        //method used to get the current position of the device.
         navigator.geolocation.getCurrentPosition((position) => {
           //console.log(position.coords.latitude+" "+position.coords.longitude);
           document.querySelector('a-text').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`);
 
-          //document.querySelector('a-gltf-model').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`);
-          //document.querySelector('a-entity').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`);
-          //19.691751584074083, -101.17542613382736
-          //47.91223031804421, 8.212913210614298
-         /* let model = document.createElement('a-entity');
-          model.setAttribute('gps-entity-place', `latitude: 47.91223437219309; longitude: 8.21291138883362;`);
-          model.setAttribute('gps-entity-place-update-positon', `distance: 0`);
-          model.setAttribute('gltf-model', './models/scan.glb');
-          model.setAttribute('rotation', '0 180 0');
-          model.setAttribute('material','shader:flat; color:red');
-          model.setAttribute('animation-mixer', '');
-          model.setAttribute('scale', '0.5 0.5 0.5');
 
-          scene.appendChild(model);
-
-          let model2 = document.createElement('a-entity');
-          //19.702936657203754, -101.15542961627439
-          model2.setAttribute('gps-entity-place', `latitude: 19.702936657203754; longitude: -101.15542961627439;`);
-          model2.setAttribute('gltf-model', './models/Rocks.glb');
-          model2.setAttribute('gps-entity-place-update-positon', `distance: 0`);
-          //model2.setAttribute('geometry', 'primitive:cube');
-          //model2.setAttribute('src','./textures/metal.jpg');
-          model2.setAttribute('material','src: ./textures/metal.jpg; color:#FFFFFF; roughness:0.5; metalness: 0.8');
-          model2.setAttribute('rotation', '10 180 0');
-          model2.setAttribute('animation-mixer', '');
-          model2.setAttribute('scale', '0.3 0.3 0.4');
-
-          scene.appendChild(model2);*/
-
+          //file names, textures are included inside of each model
           let names = [
             "WS05.glb",
             "WS09.glb",
@@ -76,6 +42,7 @@
             "WS91.glb",
           ];
 
+          //coordinates of each gargoyle
           let places = [
             'latitude: 47.995337483094225; longitude: 7.852327922231994;',//05
             'latitude: 47.99535068835776; longitude: 7.852599543575576;',//09
@@ -98,6 +65,7 @@
             , 
           ];
 
+          //loop where the models are instanced and added to scene
           for (let index = 0; index < names.length; index++) {
 
             let model = document.createElement('a-entity');
