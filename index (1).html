@@ -1,0 +1,102 @@
+﻿<!doctype HTML>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Gargoyles</title>
+
+    <script src='https://aframe.io/releases/1.0.4/aframe.min.js'></script>
+    <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
+    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+    <script>
+
+      window.onload = () => {
+        let scene = document.querySelector('a-scene');
+
+
+        navigator.geolocation.getCurrentPosition((position) => {
+          //console.log(position.coords.latitude+" "+position.coords.longitude);
+          document.querySelector('a-text').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`);
+
+
+          let names = [
+            "WS05.glb",
+            "WS09.glb",
+            "WS14.glb",
+            "WS22.glb",
+            "WS29.glb",
+            "WS34.glb",
+            "WS36.glb",
+            "WS41.glb",
+            "WS45.glb",
+            "WS46.glb",
+            "WS47.glb",
+            "WS59.glb",
+            "WS64.glb",
+            "WS74.glb",
+            "WS75.glb",
+            "WS87.glb",
+            "WS88.glb",
+            "WS91.glb",
+          ];
+
+          let places = [
+            'latitude: 47.995337483094225; longitude: 7.852327922231994;',//05
+            'latitude: 47.99535068835776; longitude: 7.852599543575576;',//09
+            'latitude: 47.99533670631392; longitude: 7.852893219643637;',//14
+            'latitude: 47.99528388522523; longitude: 7.85295357994221;',//22
+            'latitude: 47.995376322094934; longitude: 7.853247256010271;',//29
+            'latitude: 47.99542292885711; longitude: 7.853511912726812;',//34
+            'latitude: 47.995446232222754; longitude: 7.853726656145287;',//36
+            'latitude: 47.99572664856437; longitude: 7.853626829431336;',//41
+            'latitude: 47.995727425338806; longitude: 7.85348405410971;',//45
+            'latitude: 47.995721987917456; longitude: 7.853221718965909;',//46
+            'latitude: 47.995716550495544; longitude: 7.853013940245817;',//47
+            'latitude: 47.995705675649994; longitude: 7.852813126175563;',//59
+            'latitude: 47.99569402402699; longitude: 7.852612312094058;',//64
+            'latitude: 47.99568470272709; longitude: 7.852425427310054;',//74
+            'latitude: 47.995683149173985; longitude: 7.852345333831224;',//75
+            'latitude: 47.99544545544446; longitude: 7.852049336213119;',//87
+            'latitude: 47.995410500391976; longitude: 7.85218050378502;',//88
+            'latitude: 47.995692470474374; longitude: 7.85216773526042;',//91
+            , 
+          ];
+
+          for (let index = 0; index < names.length; index++) {
+
+            let model = document.createElement('a-entity');
+            model.setAttribute('gps-entity-place', places[index]);
+            model.setAttribute('gps-entity-place-update-positon', `distance: 0`);
+            model.setAttribute('gltf-model', './models/'+names[index]);
+            model.setAttribute('rotation', '0 180 0');
+            model.setAttribute('material','shader:flat');
+            model.setAttribute('animation-mixer', '');
+            model.setAttribute('scale', '0.5 0.5 0.5');
+
+            scene.appendChild(model);
+            
+          }
+        
+        });
+
+        
+      }
+    </script>
+  </head>
+
+  <body style="margin: 0; overflow: hidden;">
+    <a-scene
+      vr-mode-ui="enabled: false"
+      embedded
+      arjs="sourceType: webcam; debugUIEnabled: true;"
+    >
+      <a-text
+        value="No markers around"
+        look-at="[gps-camera]"
+        scale="5 5 5"
+      ></a-text>
+
+      <a-camera gps-camera gps-camera-update-positon rotation-reader> </a-camera>
+    </a-scene>
+  </body>
+</html>
